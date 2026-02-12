@@ -52,3 +52,22 @@ bundle exec jekyll serve
 ## 附件
 
 小附件直接放在 `assets/files/` 或 `images/`，在文章中用相对路径引用。大附件可后续迁移到 Releases。
+
+## 推送到 GitHub
+
+```bash
+# 1. 切换到 main 分支
+git branch -M main
+
+# 2. 添加远程仓库（替换为你的实际仓库地址）
+git remote add origin https://github.com/jeffok/Blog.git
+
+# 3. 推送到 GitHub
+git push -u origin main
+```
+
+如果仓库已存在且非空：
+```bash
+git pull origin main --allow-unrelated-histories
+git push -u origin main
+```
