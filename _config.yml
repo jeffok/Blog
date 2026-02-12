@@ -46,9 +46,9 @@ comments:
   provider: giscus
   giscus:
     repo: jeffok/Blog
-    repo_id:  # 在 giscus.app 配置后填入
+    repo_id: R_kgDOROj-bg
     category: General
-    category_id:  # 在 giscus.app 配置后填入
+    category_id: DIC_kwDOROj-bs4C2TVy
     mapping: pathname
     strict: "0"
     input_position: bottom
