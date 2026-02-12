@@ -4,27 +4,36 @@
 
 ## 本地开发
 
-### 使用 Docker（推荐，无需安装 Ruby）
+### 使用 Docker（推荐，ARM64 原生支持）
 
-**快速启动（推荐）：**
+**快速启动：**
 ```bash
-# 使用测试脚本（自动检查环境并启动）
-./test-local.sh
-```
+# 使用 ARM64 原生开发镜像（Apple Silicon 友好）
+docker-compose -f docker-compose.dev.yml up
 
-**手动启动：**
-```bash
-# 方式一：使用 docker-compose（推荐，支持热重载）
-docker-compose up
-
-# 方式二：直接使用 Docker
-docker build -t my-blog .
-docker run -p 4000:4000 -v $(pwd):/srv/jekyll my-blog
+# 后台运行
+docker-compose -f docker-compose.dev.yml up -d
 ```
 
 访问 http://localhost:4000
 
-> **注意：** Apple Silicon (M1/M2/M3) Mac 用户已自动配置 ARM64 平台支持
+**停止服务：**
+```bash
+docker-compose -f docker-compose.dev.yml down
+```
+
+**查看日志：**
+```bash
+docker-compose -f docker-compose.dev.yml logs -f
+```
+
+### 特性
+
+- ✅ ARM64 原生支持（Apple Silicon M1/M2/M3）
+- ✅ 使用官方 Ruby 3.3 + Debian bookworm 镜像
+- ✅ 包含 Node.js/npm（支持 PageCrypt）
+- ✅ 自动热重载（LiveReload）
+- ✅ 无需本地安装 Ruby
 
 ### 使用本地 Ruby（需要 Ruby 3.1+）
 
