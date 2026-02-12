@@ -6,8 +6,15 @@
 
 ### 使用 Docker（推荐，无需安装 Ruby）
 
+**快速启动（推荐）：**
 ```bash
-# 方式一：使用 docker-compose（推荐）
+# 使用测试脚本（自动检查环境并启动）
+./test-local.sh
+```
+
+**手动启动：**
+```bash
+# 方式一：使用 docker-compose（推荐，支持热重载）
 docker-compose up
 
 # 方式二：直接使用 Docker
@@ -16,6 +23,8 @@ docker run -p 4000:4000 -v $(pwd):/srv/jekyll my-blog
 ```
 
 访问 http://localhost:4000
+
+> **注意：** Apple Silicon (M1/M2/M3) Mac 用户已自动配置 ARM64 平台支持
 
 ### 使用本地 Ruby（需要 Ruby 3.1+）
 
