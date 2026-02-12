@@ -1,4 +1,4 @@
-FROM jekyll/jekyll:latest
+FROM --platform=linux/arm64 jekyll/jekyll:latest
 
 WORKDIR /srv/jekyll
 
