@@ -7,3 +7,10 @@ Gemfile.lock
 .bundle/
 vendor/
 .DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python

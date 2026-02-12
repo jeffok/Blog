@@ -1,0 +1,77 @@
+---
+# Chirpy 主题主样式入口（不要删）。
+---
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+ .bundle
+{%- endif -%}
+';
+
+/* =========================================================
+   仅覆盖代码块三处样式（不改变主题其它风格/配色/布局）
+   1) 去掉头部三个点
+   2) 语言类型左对齐
+   3) 字体/间距按截图更"紧凑干净"
+   ========================================================= */
+
+/* 1) 去掉代码块头部“三个点”（Chirpy 通常用伪元素绘制） */
+.code-header::before,
+.highlight .code-header::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* 2) 语言类型左对齐：不动 header 的整体 flex，只把语言 span 推到左侧 */
+.code-header > span:first-child,
+.highlight .code-header > span:first-child {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
+}
+
+/* 3) 去掉语言图标，只保留 “bash/shell/yaml/ini” 文字（更像你截图） */
+.code-header span i,
+.highlight .code-header span i {
+  display: none !important;
+}
+
+/* Chirpy 默认有个负 margin，会让语言文字看起来“缩进怪”；这里归零 */
+div[class^="language-"] .code-header span,
+div[class^="language-"] > .code-header span {
+  margin-left: 0 !important;
+}
+
+/* 字体与行高：按截图更紧凑；不引入外部字体，只用系统等宽字体栈 */
+.highlight pre,
+div[class^="language-"] pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.85rem; /* 与主题默认接近，但强制一致 */
+  line-height: 1.4rem;
+}
+
+/* 代码内容"向右缩进 2 个字符"：只影响代码块内容，不影响标题/正文 */
+div[class^="language-"] .highlight {
+  padding-left: 2ch;
+  padding-right: 2ch;
+  overflow-x: auto; /* 允许横向滚动 */
+  overflow-y: hidden; /* 禁止纵向滚动（除非内容真的很高） */
+}
+
+/* 代码块头部（语言名称 + 复制按钮）左右也缩进 2 个字符 */
+div[class^="language-"] > .code-header {
+  padding-left: 2ch;
+  padding-right: 2ch;
+}
+
+/* 代码内容禁止自动换行，允许横向滚动 */
+.highlight pre,
+div[class^="language-"] pre,
+.highlight code,
+div[class^="language-"] code {
+  white-space: pre; /* 保持原始格式，不换行 */
+  overflow-x: auto; /* 横向滚动 */
+  word-wrap: normal; /* 不自动断词 */
+  word-break: normal; /* 不自动断行 */
+}

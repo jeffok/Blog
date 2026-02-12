@@ -1,8 +1,7 @@
 services:
   chirpy:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: blog-chirpy:latest
+    pull_policy: never
     container_name: chirpy-dev
     ports:
       - "4000:4000"
