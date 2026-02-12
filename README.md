@@ -4,88 +4,45 @@
 
 ## 本地开发
 
-### 使用 Docker（推荐，ARM64 原生支持）
+使用 Docker（ARM64 原生支持，Apple Silicon 友好）：
 
-**快速启动：**
 ```bash
-# 使用 ARM64 原生开发镜像（Apple Silicon 友好）
+# 启动开发服务器
 docker-compose -f docker-compose.dev.yml up
 
 # 后台运行
 docker-compose -f docker-compose.dev.yml up -d
+
+# 停止服务
+docker-compose -f docker-compose.dev.yml down
+
+# 查看日志
+docker-compose -f docker-compose.dev.yml logs -f
 ```
 
 访问 http://localhost:4000
 
-**停止服务：**
-```bash
-docker-compose -f docker-compose.dev.yml down
-```
+**特性：** ARM64 原生支持 | Ruby 3.3 + Debian bookworm | Node.js/npm（支持 PageCrypt）| 自动热重载
 
-**查看日志：**
-```bash
-docker-compose -f docker-compose.dev.yml logs -f
-```
+## 部署
 
-### 特性
+推送代码到 GitHub 后，GitHub Actions 会自动构建并部署到 GitHub Pages。
 
-- ✅ ARM64 原生支持（Apple Silicon M1/M2/M3）
-- ✅ 使用官方 Ruby 3.3 + Debian bookworm 镜像
-- ✅ 包含 Node.js/npm（支持 PageCrypt）
-- ✅ 自动热重载（LiveReload）
-- ✅ 无需本地安装 Ruby
+**配置步骤：**
+1. 仓库 **Settings → Pages**
+2. Build and deployment → Source：选择 **GitHub Actions**
 
-### 使用本地 Ruby（需要 Ruby 3.1+）
+## 配置
 
-```bash
-bundle install
-bundle exec jekyll serve
-```
+### 自定义域名
+项目已包含 `CNAME`（jeffok.com），在仓库 Settings → Pages → Custom domain 中启用。
 
-## 部署流程
-
-1. 将本仓库推送到 GitHub（例如 `jeffok/Blog`）
-2. 在仓库 **Settings → Pages** 中，将 Source 设为 **GitHub Actions**
-3. 推送后会自动触发构建并发布
-
-## 自定义域名
-
-- 已在项目中包含 `CNAME`（jeffok.com）
-- 在仓库 Settings → Pages → Custom domain 中填写 `jeffok.com` 并启用 HTTPS
-
-## 评论系统（giscus）
-
+### 评论系统（giscus）
 1. 访问 [giscus.app](https://giscus.app)
-2. 选择本仓库，启用 Discussions，创建 `General` 分类
-3. 将生成的 `data-repo-id` 和 `data-category-id` 填入 `_config.yml` 的 `comments.giscus` 下
+2. 选择仓库，启用 Discussions，创建 `General` 分类
+3. 将 `repo_id` 和 `category_id` 填入 `_config.yml`
 
-## 页面加密（PageCrypt）
-
-需加密的少数页面：
-
-1. 在 `_data/encrypted_pages.yml` 的 `pages` 下列出路径（如 `posts/private-post`）
-2. 在 GitHub 仓库 **Settings → Secrets and variables → Actions** 中创建 `PAGECRYPT_PASSWORD`
-3. 构建后对应页面将需要输入密码才能查看
-
-## 附件
-
-小附件直接放在 `assets/files/` 或 `images/`，在文章中用相对路径引用。大附件可后续迁移到 Releases。
-
-## 推送到 GitHub
-
-```bash
-# 1. 切换到 main 分支
-git branch -M main
-
-# 2. 添加远程仓库（替换为你的实际仓库地址）
-git remote add origin https://github.com/jeffok/Blog.git
-
-# 3. 推送到 GitHub
-git push -u origin main
-```
-
-如果仓库已存在且非空：
-```bash
-git pull origin main --allow-unrelated-histories
-git push -u origin main
-```
+### 页面加密（PageCrypt）
+1. 在 `_data/encrypted_pages.yml` 中列出需加密的页面路径
+2. 在 GitHub Secrets 中创建 `PAGECRYPT_PASSWORD`
+3. 构建后对应页面需要密码访问

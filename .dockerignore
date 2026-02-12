@@ -5,5 +5,7 @@ _site/
 .git/
 .gitignore
 README.md
-本地预览指南.md
 node_modules/
+vendor/
+.bundle/
+Gemfile.lock
