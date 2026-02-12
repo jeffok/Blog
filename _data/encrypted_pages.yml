@@ -1,0 +1,4 @@
+# 需加密的页面列表（相对 _site 的路径，如 posts/private-post）
+# 需在 GitHub 仓库 Settings → Secrets 中设置 PAGECRYPT_PASSWORD
+# 若未设置密码或列表为空，将跳过加密步骤
+pages: []

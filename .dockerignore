@@ -1,0 +1,9 @@
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.git/
+.gitignore
+README.md
+本地预览指南.md
+node_modules/
