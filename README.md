@@ -8,16 +8,16 @@
 
 ```bash
 # 启动开发服务器
-docker-compose -f docker-compose.dev.yml up
+docker-compose up
 
 # 后台运行
-docker-compose -f docker-compose.dev.yml up -d
+docker-compose up -d
 
 # 停止服务
-docker-compose -f docker-compose.dev.yml down
+docker-compose down
 
 # 查看日志
-docker-compose -f docker-compose.dev.yml logs -f
+docker-compose logs -f
 ```
 
 访问 http://localhost:4000

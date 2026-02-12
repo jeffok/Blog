@@ -2,7 +2,7 @@ services:
   chirpy:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: chirpy-dev
     ports:
       - "4000:4000"
