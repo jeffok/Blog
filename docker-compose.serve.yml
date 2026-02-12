@@ -1,0 +1,9 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.serve
+    ports:
+      - "4000:80"
+    volumes:
+      - ./_site:/usr/share/nginx/html:ro

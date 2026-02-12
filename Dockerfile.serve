@@ -1,0 +1,12 @@
+# 使用 nginx 提供预构建的静态文件
+FROM nginx:alpine
+
+WORKDIR /usr/share/nginx/html
+
+# 复制预构建的站点文件
+COPY _site/ .
+
+# 暴露端口
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

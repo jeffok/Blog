@@ -4,8 +4,8 @@ services:
       context: .
       dockerfile: Dockerfile
       platforms:
-        - linux/arm64
-    platform: linux/arm64
+        - linux/amd64
+    platform: linux/amd64
     ports:
       - "4000:4000"
     volumes:
@@ -13,7 +13,9 @@ services:
       - jekyll_cache:/usr/local/bundle
     environment:
       - JEKYLL_ENV=development
-    command: bundle exec jekyll serve --host 0.0.0.0 --force_polling --livereload
+      - SASS_EMBEDDED_HOST=0.0.0.0
+      - SASS_EMBEDDED_PORT=0
+    command: bundle exec jekyll serve --host 0.0.0.0 --force_polling --livereload --trace
 
 volumes:
   jekyll_cache:
