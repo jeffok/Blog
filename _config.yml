@@ -49,7 +49,8 @@ comments:
     repo_id: R_kgDOROj-bg
     category: General
     category_id: DIC_kwDOROj-bs4C2TVy
-    mapping: pathname
+    # 使用 title 避免中文 URL 在 GitHub Discussions 中显示为百分号编码
+    mapping: title
     strict: "0"
     input_position: bottom
     lang: zh-CN
